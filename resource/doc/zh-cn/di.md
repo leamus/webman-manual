@@ -68,17 +68,17 @@ $user = new UserController($mailer);
 > 必须是由框架或者`php-di`创建的实例才能完成依赖自动注入，手动`new`的实例无法完成依赖自动注入，如需注入，需要使用`support\Container`替换`new`语句，例如：
 
 ```php
-use app\service\UserService;
+use app\controller\UserController;
 use app\service\LogService;
 use support\Container;
 
 // new关键字创建的实例无法依赖注入
-$user_service = new UserService;
+$user_controller = new UserController;
 // new关键字创建的实例无法依赖注入
 $log_service = new LogService($path, $name);
 
 // Container创建的实例可以依赖注入
-$user_service = Container::get(UserService::class);
+$user_controller = Container::get(UserController::class);
 // Container创建的实例可以依赖注入
 $log_service = Container::make(LogService::class, [$path, $name]);
 ```
